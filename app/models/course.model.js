@@ -10,10 +10,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.BOOLEAN,
     },
     courseLevel: {
-      type: Sequelize.INT,
+      type: Sequelize.INTEGER,
     },
     courseHours: {
-      type: Sequelize.INT,
+      type: Sequelize.INTEGER,
     },
     courseName: {
       type: Sequelize.STRING,

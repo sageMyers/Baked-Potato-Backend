@@ -3,14 +3,5 @@ module.exports = (app) => {
 
   var router = require("express").Router();
 
-  // Login
-  router.post("/login", auth.login);
-
-  // Authorization
-  router.post("/authorize/:id", auth.authorize);
-
-  // Logout
-  router.post("/logout", auth.logout);
-
-  app.use("/tutorial", router);
+  // app.use("/tutorial", router);
 };
