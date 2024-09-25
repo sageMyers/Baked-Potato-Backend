@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+
 const express = require("express");
 const cors = require("cors");
 
@@ -24,10 +25,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome " });
 });
 
 require("./app/routes/course.routes.js")(app);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3100;
