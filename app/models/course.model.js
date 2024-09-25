@@ -1,7 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
   const Course = sequelize.define("course", {
-    courseID: {
-      type: Sequelize.STRING,
+    courseid: {
+      type: Sequelize.INTEGER,
+      primaryKey: true
     },
     dept: {
       type: Sequelize.STRING,
@@ -21,6 +22,9 @@ module.exports = (sequelize, Sequelize) => {
     courseDescription: {
       type: Sequelize.STRING,
     },
-  });
+
+  }
+  ,{timestamps: false}
+);
   return Course;
 };

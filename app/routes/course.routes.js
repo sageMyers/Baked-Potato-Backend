@@ -1,7 +1,11 @@
-module.exports = (app) => {
-  const auth = require("../controllers/course.controller.js");
+// ./app/routes/course.routes.js
+module.exports = app => {
+  const courses = require("../controllers/course.controller.js");
 
   var router = require("express").Router();
 
-  // app.use("/tutorial", router);
+  // Retrieve all Courses
+  router.get("/", courses.findAll);
+
+  app.use("/api/courses", router);
 };
