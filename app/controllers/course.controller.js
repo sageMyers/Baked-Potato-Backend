@@ -29,3 +29,27 @@ exports.findAll = (req, res) => {
   };
  
 
+  // Delete a Course by an ID from the database
+  exports.delete = (req, res) => {
+    const id = req.params.id;
+    Course.destroy({
+      where: { courseid: id },
+    })
+      .then((num) => {
+        if (num == 1) {
+          res.send({
+            message: "Course was deleted successfully!",
+          });
+        } else {
+          res.send({
+            message: `Cannot delete Course with id=${id}. Maybe Course was not found!`,
+          });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Could not delete Course with id=" + id,
+        });
+      });
+  };
+
