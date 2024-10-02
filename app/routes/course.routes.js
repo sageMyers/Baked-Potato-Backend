@@ -10,4 +10,6 @@ module.exports = app => {
   router.delete("/:id", courses.delete);
 
   app.use("/api/courses", router);
+  
+  app.post("/api/courses", courses.create);
 };
