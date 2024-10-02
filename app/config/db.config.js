@@ -3,7 +3,7 @@ module.exports = {
   HOST: 'localhost',
   USER: 'root',
   PASSWORD: '',
-  DB: 'course_listing',
+  DB: 'course_listings',
   dialect: 'mariadb',
   pool: {
       max: 5,
