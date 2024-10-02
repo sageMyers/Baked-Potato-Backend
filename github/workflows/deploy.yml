@@ -1,0 +1,44 @@
+name: DEPLOY TO STAGING
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - dev
+
+jobs:
+  aws-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install
+      - run: npm run bundle
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "deploy/"
+          REMOTE_HOST: "project2.eaglesoftwareteam.com"
+          REMOTE_USER: ubuntu
+          TARGET: "nodeapps/2024/project2/t2"
+      - name: Execute SSH commmands on remote server
+        uses: JimCronqvist/action-ssh@master
+        env:
+          NAME: "Root"
+        with:
+          hosts: "ubuntu@project2.eaglesoftwareteam.com"
+          privateKey: ${{ secrets.SERVER_SSH_KEY }}
+          debug: false
+          command: |
+            cd nodeapps/2024/project2/t2
+            npm install
+            sudo systemctl stop course-backend-t2
+            sudo cp course-backend.service /lib/systemd/system/course-backend-t2.service
+            sudo systemctl daemon-reload
+            sudo systemctl start course-backend-t2
