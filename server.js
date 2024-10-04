@@ -30,7 +30,9 @@ app.get("/", (req, res) => {
 
 require("./app/routes/course.routes.js")(app);
 
-app.use("/course-t2/", require("./app/routes/course.routes.js"));
+route = require("./app/routes/course.routes.js");
+
+app.use("/course-t2/", route)
 // set port, listen for requests
 const PORT = process.env.PORT || 3012;
 if (process.env.NODE_ENV !== "test") {
