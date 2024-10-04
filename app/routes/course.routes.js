@@ -7,5 +7,9 @@ module.exports = app => {
   // Retrieve all Courses
   router.get("/", courses.findAll);
 
+  router.delete("/:id", courses.delete);
+
   app.use("/api/courses", router);
+  
+  app.post("/api/courses", courses.create);
 };
