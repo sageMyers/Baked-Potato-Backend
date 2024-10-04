@@ -25,7 +25,9 @@ module.exports = (sequelize, Sequelize) => {
     },
 
   }
-  ,{timestamps: false}
+  ,{timestamps: false,
+    freezeTableName: true
+  }
 );
   return Course;
 };
