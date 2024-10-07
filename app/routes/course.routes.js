@@ -12,5 +12,7 @@ router.delete("/:id", courses.delete);
 router.use("/api/courses", router);
   
 router.post("/api/courses", courses.create);
+
+router.put("/:id", courses.update)
   
 module.exports = router;
