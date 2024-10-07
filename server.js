@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome " });
 });
 
-require("./app/routes/course.routes.js")(app);
+//require("./app/routes/course.routes.js")(app);
 
 route = require("./app/routes/course.routes.js");
 
