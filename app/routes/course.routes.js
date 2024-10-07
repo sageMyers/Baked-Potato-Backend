@@ -9,7 +9,7 @@ router.get("/", courses.findAll);
 
 router.delete("/:id", courses.delete);
 
-router.use("/api/courses", courses.create);
+router.use("/api/courses", router);
   
 router.post("/api/courses", courses.create);
   
